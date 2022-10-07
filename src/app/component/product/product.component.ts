@@ -10,16 +10,20 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductComponent implements OnInit {
  
   products:Product[] = [];
-  dataLoaded=true;
+  dataLoaded=false;
   constructor(private productService:ProductService) {}
 
   ngOnInit(): void {
     this.getProducts();
 }
 getProducts(){
-  console.log("basladi")
- this.productService.getProducts().subscribe(response=>{this.products=response.Data});
+  console.log("basladi");
+ this.productService.getProducts()
+ .subscribe(response=>{this.products=response.data;
+  this.dataLoaded=true;
+});
  console.log("merhaba");
- this.dataLoaded=false;
+console.log("biti");
+
 }   
 }
