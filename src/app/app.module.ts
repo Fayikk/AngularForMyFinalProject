@@ -11,7 +11,8 @@ import { ProductComponent } from './component/product/product.component';
 import { VatAddedPipe } from './pipes/vat-added.pipe';
 import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {ToastrModule} from "ngx-toastr"
+import {ToastrModule} from "ngx-toastr";
+import { CartSummaryComponent } from './component/cart-summary/cart-summary.component'
 
 @NgModule({
   declarations: [//component kullanılacğı zaman otomatik olarak eklmee işlemini gerçekeleştirecektir. 
@@ -20,7 +21,8 @@ import {ToastrModule} from "ngx-toastr"
     NaviComponent,
     ProductComponent,
     VatAddedPipe,
-    FilterPipePipe
+    FilterPipePipe,
+    CartSummaryComponent
   ],
   imports: [
     BrowserModule,
