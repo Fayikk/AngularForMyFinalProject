@@ -11,7 +11,7 @@
     <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Aramak istediğinizi Giriniz">
   </div>
 
-<div *ngIf="filterText.length>2"    class="alert alert-success">
+<div *ngIf="filterText.length>2"    class="alert alert-alert">
     {{filterText}} Ürünü
 </div>
 
@@ -26,13 +26,21 @@
       <th>Stok Adedi</th>
     </tr>
   </thead>
+<tbody>
+    <tr *ngFor="let product of products | filterPipe:filterText  "  >
+        <td>{{ product.productId }}</td>
+        <td>{{ product.productName |uppercase }}</td>
+        <td>{{ product.categoryId }}</td>
+        <td>{{ product.unitPrice }}</td>
+        <td>{{ product.unitPrice |vatAdded:18 |currency }} </td>
+        <td>{{ product.unitsInStock }}</td>
+        <td>
+            <button (click)="addToCart(product)" type="button" class="btn btn-warning">Sepete Ekle</button>
 
-  <tr *ngFor="let product of products">
-    <td>{{ product.productId }}</td>
-    <td>{{ product.productName |uppercase }}</td>
-    <td>{{ product.categoryId }}</td>
-    <td>{{ product.unitPrice }}</td>
-    <td>{{ product.unitPrice |vatAdded:18 |currency }} </td>
-    <td>{{ product.unitsInStock }}</td>
-  </tr>
+        </td>
+
+      </tr>
+      
+</tbody>
+  
 </table>
