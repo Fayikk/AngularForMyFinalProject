@@ -24,4 +24,8 @@ export class ProductAddComponent implements OnInit {
       //Bu alan onunla ilgilenmektedir.
     });
   }
+  add(){
+    let productModel = Object.assign({},this.productAddForm.value)
+    console.log(productModel) 
+  }
 }
