@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule} from "@angular/common/http"//import ediyoruz
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { CategoryComponent } from './component/category/category.component';
 import { NaviComponent } from './component/navi/navi.component';
 import { ProductComponent } from './component/product/product.component';
@@ -12,7 +12,8 @@ import { VatAddedPipe } from './pipes/vat-added.pipe';
 import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ToastrModule} from "ngx-toastr";
-import { CartSummaryComponent } from './component/cart-summary/cart-summary.component'
+import { CartSummaryComponent } from './component/cart-summary/cart-summary.component';
+import { ProductAddComponent } from './component/product-add/product-add.component'
 
 @NgModule({
   declarations: [//component kullanılacğı zaman otomatik olarak eklmee işlemini gerçekeleştirecektir. 
@@ -22,7 +23,8 @@ import { CartSummaryComponent } from './component/cart-summary/cart-summary.comp
     ProductComponent,
     VatAddedPipe,
     FilterPipePipe,
-    CartSummaryComponent
+    CartSummaryComponent,
+    ProductAddComponent
   ],
   imports: [
     BrowserModule,
@@ -32,8 +34,8 @@ import { CartSummaryComponent } from './component/cart-summary/cart-summary.comp
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       positionClass:"toast-bottom-right"
-    })
-  
+    }),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

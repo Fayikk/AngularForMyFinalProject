@@ -4,6 +4,8 @@ import { ToastrService } from 'ngx-toastr';
 import { Product } from 'src/app/models/product';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
+import {FormGroup,FormBuilder,FormControl,Validators} from "@angular/forms" 
+
 
 @Component({
   selector: 'app-product',
@@ -20,7 +22,8 @@ export class ProductComponent implements OnInit {
   constructor(private productService:ProductService
     ,private activatedRoute:ActivatedRoute
     ,private toastrService:ToastrService
-    ,private cartService:CartService) {}
+    ,private cartService:CartService
+    ,) {}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params=>{
