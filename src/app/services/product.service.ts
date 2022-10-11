@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';//observable rxjs'den gelmektedir
 // import { ListResponseModel } from '../models/ListResponseModel';
 import { ListResponseModel } from '../models/ListResponseModel';
 import { Product } from '../models/product';
+import { ResponseModel } from '../models/responseModel';
 // import { Product } from '../models/product';
 // import { ListResponseModel } from '../models/ListResponseModel';
 
@@ -27,4 +28,8 @@ export class ProductService {
     get<ListResponseModel<Product>>(newPath)
     //gelen datayı productresponsemodele map edeceksin anlamına gelmektedir. 
   } 
+  add(product:Product):Observable<ResponseModel>{
+    return this.httpClient.post<ResponseModel>(this.apiUrl+"Products/add",product)//burada hangi adrese ne göndereyim anlamına gelmektedir.
+  }
+
 }
