@@ -5,3 +5,7 @@ export interface Product{
     unitsInStock:number;
     unitPrice:number;
 }
+
+
+
+

@@ -1,3 +1,4 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
@@ -10,7 +11,8 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductAddComponent implements OnInit {
   productAddForm: FormGroup;
-  constructor(private formBuilder: FormBuilder,private productService:ProductService
+  constructor(private formBuilder: FormBuilder
+    ,private productService:ProductService
     ,private toastrService:ToastrService) {}
 
   ngOnInit(): void {
@@ -35,10 +37,12 @@ export class ProductAddComponent implements OnInit {
     if (this.productAddForm.valid) { //eğer değerler bir validationdan geçmiş ise diğer kontrol ediyoruz.
     let productModel = Object.assign({},this.productAddForm.value)  //buradaki satırda formumuz gönderilen değerler ile birebir uyuşmaktamıdır diye kontrol edilmektedir.    
     this.productService.add(productModel).subscribe(data=>{
-    console.log();
-    this.toastrService.success("Ürün başarıyla eklendi")
+    console.log(Response);
+    this.toastrService.success("Başarıyla Ürün Eklendi")
 
-    }, responseError=>{console.log(responseError.error)})//productModel içerisindeki veriler zaten form içerisindeki veriler ile aynıdır dolayısıyla 
+    }, responseError=>{console.log(responseError)
+    this.toastrService.error(responseError.error)
+    })//productModel içerisindeki veriler zaten form içerisindeki veriler ile aynıdır dolayısıyla 
     //Herhangi bir problem olmaması durumunda add ile productModel'i ekle anlamına gelmektedir.
     
   }else{
