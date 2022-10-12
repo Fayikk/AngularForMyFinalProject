@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {HttpClientModule} from "@angular/common/http"//import ediyoruz
+import {HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http"//import ediyoruz
 import { ReactiveFormsModule } from '@angular/forms';
 import { CategoryComponent } from './component/category/category.component';
 import { NaviComponent } from './component/navi/navi.component';
@@ -15,6 +15,8 @@ import {ToastrModule} from "ngx-toastr";
 import { CartSummaryComponent } from './component/cart-summary/cart-summary.component';
 import { ProductAddComponent } from './component/product-add/product-add.component'
 import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './component/login/login.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 @NgModule({
   declarations: [//component kullanılacğı zaman otomatik olarak eklmee işlemini gerçekeleştirecektir. 
     AppComponent,
@@ -24,7 +26,8 @@ import { FormsModule } from '@angular/forms';
     VatAddedPipe,
     FilterPipePipe,
     CartSummaryComponent,
-    ProductAddComponent
+    ProductAddComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,9 @@ import { FormsModule } from '@angular/forms';
       positionClass:"toast-bottom-right"
     }),
   ],
-  providers: [],
+  providers: [{
+    provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
